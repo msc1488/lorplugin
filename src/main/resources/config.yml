@@ -1,0 +1,128 @@
+# ==========================================================
+#  LorPlugin — Отголоски Бездны
+#  Paper 1.21.11
+# ==========================================================
+
+settings:
+  # Пустой список = все миры. Иначе — только перечисленные.
+  worlds: []
+  # Показывать HUD (эхо/заражение) над хотбаром.
+  hud: true
+  # Автосохранение профилей, секунды.
+  save-interval-seconds: 300
+  debug: false
+
+echo:
+  per-sculk-block: 2
+  per-mob: 20
+  per-boss: 500
+  per-chapter: 100
+  per-tide: 150
+
+# Переводы эха между игроками: /lor pay <ник> <сумма>.
+payments:
+  enabled: true
+  # Минимальная сумма перевода.
+  min-amount: 1
+  # Максимальная сумма перевода. 0 — без ограничения.
+  max-amount: 0
+  # Комиссия сервера в процентах (0–99). Списывается с суммы перевода.
+  tax-percent: 0
+  # Задержка между переводами одного игрока, секунды. 0 — без задержки.
+  cooldown-seconds: 3
+  # Логи переводов: data/payments.log и /lor logs (право lor.logs).
+  logs:
+    enabled: true
+    # Сколько последних записей держать в памяти для /lor logs.
+    keep: 500
+
+# Встроенный аукцион: /lor ah.
+auction:
+  enabled: true
+  # Максимум активных лотов у одного игрока.
+  max-listings: 5
+  min-price: 1
+  max-price: 1000000
+  # Комиссия сервера с продажи, проценты 0–99.
+  tax-percent: 5
+  # Запрещённые к продаже предметы (Material).
+  blocked-materials:
+    - BEDROCK
+    - COMMAND_BLOCK
+    - CHAIN_COMMAND_BLOCK
+    - REPEATING_COMMAND_BLOCK
+    - STRUCTURE_BLOCK
+    - STRUCTURE_VOID
+    - BARRIER
+    - LIGHT
+    - DEBUG_STICK
+
+corruption:
+  enabled: true
+  # Радиус поиска скалка вокруг игрока (в блоках).
+  radius: 6
+  # Заражение за каждый найденный скалк-блок (раз в 3 секунды), но не более max-blocks.
+  per-block: 0.05
+  max-blocks: 12
+  # Дополнительное заражение в биоме Глубокой Тьмы.
+  deep-dark: 0.20
+  # Медленное очищение вдали от скалка.
+  decay: 0.10
+  max: 100
+  cleanse-amount: 40
+  # Урон при 100% заражения (раз в 6 секунд).
+  damage-at-max: 1.0
+  # Множитель заражения при Амулете Тишины в инвентаре.
+  amulet-multiplier: 0.5
+
+mobs:
+  # Шанс заменить естественный спавн в Глубокой Тьме на скалк-моба.
+  natural-spawn-chance: 0.05
+  despawn-on-disable: true
+  max-tracked: 60
+
+boss:
+  health: 320
+  damage: 7.0
+  sonic-damage: 10.0
+  # Если рядом нет игроков дольше N секунд — босс исчезает.
+  despawn-radius: 64
+  despawn-seconds: 45
+
+ritual:
+  # С какой главы доступен ритуал.
+  required-chapter: 5
+  # Требовать Ключ Бездны (расходуется).
+  require-key: true
+  # Глобальная задержка между ритуалами, секунды.
+  cooldown-seconds: 300
+
+tide:
+  enabled: true
+  interval-minutes: 30
+  duration-seconds: 300
+  # Заражение за каждый цикл (10 секунд) во время прилива.
+  corruption-per-cycle: 1.5
+  corruption-multiplier: 3.0
+  mobs-per-cycle: 2
+  mob-cap: 30
+  # Расползание скалка вокруг игроков во время прилива (только ниже spread-max-y).
+  spread-blocks: true
+  spread-max-y: 0
+  reward-echo: 150
+
+worldgen:
+  shrines:
+    enabled: true
+    # Шанс на чанк (0.03 = 3%). Только биом deep_dark.
+    chance: 0.03
+    min-y: -50
+    max-y: -20
+
+# Управление рецептами. false — отключить конкретный рецепт.
+recipes:
+  resonator: true
+  cleansing_essence: true
+  sculk_blade: true
+  silence_amulet: true
+  listener_tome: true
