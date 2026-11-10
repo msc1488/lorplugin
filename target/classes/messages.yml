@@ -1,0 +1,454 @@
+# Все тексты плагина — MiniMessage.
+# Документация: https://docs.advntr.dev/minimessage/format.html
+# Плейсхолдеры вида {player}, {echo} подставляются автоматически.
+
+prefix: "<dark_gray>[<dark_aqua>Эхо<dark_gray>] <gray>"
+
+# ---------------- Команды ----------------
+command:
+  no-permission: "<red>У тебя нет права слушать этот шёпот."
+  players-only: "<red>Эта команда доступна только игрокам."
+  reloaded: "<green>Конфигурация, сообщения и главы перезагружены."
+  invalid-item: "<red>Неизвестный предмет: <white>{item}<red>."
+  invalid-mob: "<red>Неизвестный моб: <white>{mob}<red>."
+  player-not-found: "<red>Игрок <white>{player}<red> не найден."
+  usage: "<gray>Использование: <white>{usage}"
+  given: "<green>Выдан предмет <white>{item}<green> игроку <white>{player}<green>."
+  spawned: "<green>Создано <white>{amount}<green> мобов <white>{mob}<green>."
+  echo-set: "<green>Эхо игрока <white>{player}<green>: <aqua>{echo}<green>."
+  corruption-set: "<green>Заражение игрока <white>{player}<green>: <dark_purple>{percent}%<green>."
+  chapter-set: "<green>Игрок <white>{player}<green> перенесён в главу <white>{chapter}<green>."
+  chapter-completed: "<green>Глава <white>{chapter}<green> завершена для <white>{player}<green>."
+  reset: "<green>Профиль игрока <white>{player}<green> полностью сброшен."
+  event-started: "<green>Скалк-прилив запущен вручную."
+  event-failed: "<red>Не удалось запустить прилив: нет подходящих игроков."
+  event-stopped: "<green>Скалк-прилив остановлен."
+  hud-on: "<gray>HUD включён."
+  hud-off: "<gray>HUD выключен."
+  pay-usage: "<gray>Использование: <white>/lor pay <ник> <сумма>"
+  pay-self: "<red>Нельзя переводить эхо самому себе."
+  pay-invalid-amount: "<red>Некорректная сумма. Пример: <white>/lor pay Steve 250<red>."
+  pay-min: "<red>Минимальный перевод: <white>{min}<red> эха."
+  pay-max: "<red>Максимальный перевод: <white>{max}<red> эха."
+  pay-not-enough: "<red>Недостаточно эха. У тебя <aqua>{echo}<red>."
+  pay-cooldown: "<red>Подожди <white>{seconds} сек<red> перед следующим переводом."
+  pay-disabled: "<red>Переводы эха отключены на этом сервере."
+  pay-success: "<green>Ты перевёл <aqua>{amount}<green> эха игроку <white>{player}<green>."
+  pay-received: "<aqua>{player} <gray>перевёл тебе <aqua>{amount}<gray> эха."
+  pay-tax: "<dark_gray>Комиссия: <gray>{tax} эха<dark_gray>. Получатель получит <gray>{received}<dark_gray>."
+  pay-tax-received: "<dark_gray>Комиссия сервера: <gray>{tax}<dark_gray> эха."
+  logs-disabled: "<red>Логи переводов отключены в конфиге."
+  logs-empty: "<gray>Записей о переводах пока нет."
+  logs-empty-player: "<gray>У игрока <white>{player}<gray> нет записей о переводах."
+  logs-header: "<dark_aqua><bold>Переводы эха</bold> <dark_gray>— <gray>{player}<dark_gray>, всего: <white>{count} <dark_gray>(стр. {page}/{pages})"
+  logs-line: "<dark_gray>{time} <white>{from} <dark_gray>→ <white>{to} <dark_gray>— <aqua>{amount} эха"
+  logs-line-tax: "<dark_gray>{time} <white>{from} <dark_gray>→ <white>{to} <dark_gray>— <aqua>{amount} эха <dark_gray>(комиссия <gray>{tax}<dark_gray>, дошло <gray>{received}<dark_gray>)"
+  logs-footer: "<dark_gray>Страница <white>{page}<dark_gray>/<white>{pages}<dark_gray>. <gray>/lor logs [ник] <страница>"
+  logs-help: "<gray>/lor logs [ник] [страница] <dark_gray>— логи переводов"
+  pay-help-line: "<gray>/lor pay <ник> <сумма> <dark_gray>— перевести эхо"
+  ah-help-line: "<gray>/lor ah <dark_gray>— аукцион"
+  ah-disabled: "<red>Аукцион отключён на этом сервере."
+  ah-sold: "<green>Лот выставлен: <white>{item}<green> за <aqua>{price} эха<green>. ID: <white>{id}"
+  ah-sell-empty: "<red>Возьми предмет в главную руку, чтобы выставить его на аукцион."
+  ah-sell-blocked: "<red>Этот предмет нельзя продавать: <white>{item}<red>."
+  ah-price-invalid: "<red>Некорректная цена. Пример: <white>/lor ah sell 250<red>."
+  ah-price-low: "<red>Минимальная цена лота: <white>{min}<red> эха."
+  ah-price-high: "<red>Максимальная цена лота: <white>{max}<red> эха."
+  ah-limit: "<red>У тебя уже <white>{max}<red> лотов. Сначала продай или сними что-то."
+  ah-not-found: "<red>Лот не найден: <white>{id}<red>."
+  ah-own-lot: "<red>Это твой лот. Снять его можно через <white>/lor ah my<red>."
+  ah-bought: "<green>Куплено: <white>{item}<green> за <aqua>{price} эха<green> у <white>{player}<green>."
+  ah-buy-not-enough: "<red>Недостаточно эха: нужно <aqua>{price}<red>, у тебя <aqua>{echo}<red>."
+  ah-cancelled: "<green>Лот снят: <white>{item}<green>."
+  ah-not-owner: "<red>Это не твой лот."
+  ah-dropped: "<gray>Инвентарь полон — предмет выпал рядом."
+  ah-seller-notify: "<green>Твой лот <white>{item}<green> куплен за <aqua>{price} эха<green> (комиссия <gray>{tax}<green>, тебе <aqua>{received}<green>)."
+  ah-help:
+    - "<dark_aqua><bold>Аукцион"
+    - "<gray>/lor ah <dark_gray>— открыть аукцион"
+    - "<gray>/lor ah search <запрос> <dark_gray>— поиск предмета"
+    - "<gray>/lor ah sell <цена> <dark_gray>— выставить предмет из главной руки"
+    - "<gray>/lor ah my [страница] <dark_gray>— мои лоты"
+    - "<gray>/lor ah buy <id> <dark_gray>— купить лот по ID"
+    - "<gray>/lor ah cancel <id> <dark_gray>— снять свой лот"
+  top-line: "<dark_gray>{place}. <white>{player} <dark_gray>— <aqua>{echo} эха"
+  help:
+    - "<dark_aqua><bold>Отголоски Бездны"
+    - "<gray>/lor <dark_gray>— профиль"
+    - "<gray>/lor quests <dark_gray>— главы и цели"
+    - "<gray>/lor codex <dark_gray>— кодекс Слушающего"
+    - "<gray>/lor relics <dark_gray>— реликвии"
+    - "<gray>/lor recipes <dark_gray>— крафты"
+    - "<gray>/lor stats <dark_gray>— статистика"
+    - "<gray>/lor top <dark_gray>— топ по эху"
+    - "<gray>/lor ritual <dark_gray>— схема ритуала"
+    - "<gray>/lor hud <dark_gray>— включить/выключить HUD"
+  admin-help:
+    - "<dark_aqua><bold>LorPlugin — админ-команды"
+    - "<gray>/lor admin reload"
+    - "<gray>/lor admin event start|stop"
+    - "<gray>/lor admin give <id> [player] [amount]"
+    - "<gray>/lor admin spawn <mob> [amount] <dark_gray>(crawler, sentinel, devourer, herald)"
+    - "<gray>/lor admin boss <dark_gray>— призвать босса на своей позиции"
+    - "<gray>/lor admin echo <player> <amount>"
+    - "<gray>/lor admin corruption <player> <amount>"
+    - "<gray>/lor admin chapter <player> <id>"
+    - "<gray>/lor admin complete <player> <id>"
+    - "<gray>/lor admin reset <player>"
+
+# ---------------- Предметы ----------------
+items:
+  pickup: "<dark_gray>Подобрано: <white>{item}"
+  echo_shard:
+    name: "<aqua>Осколок Эха"
+    short: "Осколок Эха"
+    lore:
+      - "<gray>Кристаллизованный голос тех,"
+      - "<gray>кто слушал слишком долго."
+      - ""
+      - "<dark_gray>Материал для резонатора и ритуалов."
+  resonator:
+    name: "<light_purple>Резонатор Слушающего"
+    short: "Резонатор"
+    lore:
+      - "<gray>Отвечает на шёпот скалка."
+      - "<gray>Позволяет услышать то, что скрыто."
+      - ""
+      - "<dark_gray>ПКМ: импульс (30 сек)"
+      - "<dark_gray>ПКМ по скалк-катализатору: ритуал"
+    cooldown: "<red>Резонатор ещё не остыл: <white>{seconds} сек<red>."
+    pulse: "<dark_aqua>Импульс: <white>{sculk}<dark_aqua> скалк-блоков, <white>{mobs}<dark_aqua> существ рядом."
+  cleansing_essence:
+    name: "<green>Очищающая эссенция"
+    short: "Очищающая эссенция"
+    lore:
+      - "<gray>Тишина, разлитая в стекле."
+      - "<gray>Заглушает хор внутри тебя."
+      - ""
+      - "<dark_gray>Выпить: -40% заражения"
+  sculk_blade:
+    name: "<dark_purple>Скалк-клинок"
+    short: "Скалк-клинок"
+    lore:
+      - "<gray>Клинок, выкованный из эха"
+      - "<gray>и упрямства."
+      - ""
+      - "<dark_gray>+4 урона по порождениям скалка"
+      - "<dark_gray>Неразрушимый"
+  abyss_key:
+    name: "<dark_aqua>Ключ Бездны"
+    short: "Ключ Бездны"
+    lore:
+      - "<gray>Холодный ключ, который"
+      - "<gray>не подходит ни к одной двери."
+      - ""
+      - "<dark_gray>Открывает ритуал призыва Глашатая."
+  heart_of_choir:
+    name: "<light_purple>Сердце Хора"
+    short: "Сердце Хора"
+    lore:
+      - "<gray>Оно всё ещё бьётся."
+      - "<gray>И оно всё ещё поёт."
+      - ""
+      - "<dark_gray>Трофей Глашатая Бездны."
+    whisper: "<dark_gray><italic>Сердце Хора отзывается: «Ты слышишь нас. Ты уже наш.»"
+  silence_amulet:
+    name: "<aqua>Амулет Тишины"
+    short: "Амулет Тишины"
+    lore:
+      - "<gray>Пока он при тебе,"
+      - "<gray>шёпот звучит тише вдвое."
+      - ""
+      - "<dark_gray>-50% заражения, защита от Тьмы"
+    hint: "<gray>Амулет тихо гудит. Пока он в инвентаре, скалк слышит тебя хуже."
+  listener_tome:
+    name: "<gold>Фолиант Слушающего"
+    short: "Фолиант"
+    lore:
+      - "<gray>Записи тех, кто спускался"
+      - "<gray>в Глубокую Тьму раньше."
+      - ""
+      - "<dark_gray>ПКМ: открыть кодекс"
+
+# ---------------- HUD ----------------
+hud:
+  echo-label: "<dark_gray>Эхо:"
+  sculk-label: "<dark_gray>Скалк:"
+  objective: "<dark_gray>Цель: <gray>{text} <white>{current}<dark_gray>/<white>{amount}"
+
+blocks:
+  echo: "<aqua>+{echo} эха"
+
+# ---------------- Заражение ----------------
+corruption:
+  max-warning: "<dark_red>Хор поглощает тебя!"
+  cleansed: "<green>Очищение: <white>-{amount}%<green> заражения."
+  already-clean: "<gray>В тебе уже нечего заглушать."
+  death: "<dark_gray><italic>Смерть ненадолго заглушает хор…"
+
+whispers:
+  - "Ты слышишь нас?"
+  - "Спустись глубже."
+  - "Мы пели ещё до твоего рождения."
+  - "Хранитель не спит. Он слушает."
+  - "Оставь эхо. Оставь себя."
+  - "Тишина — это тоже голос."
+  - "Город помнит твои шаги."
+
+# ---------------- Главы ----------------
+chapter:
+  started-title: "<dark_aqua>Глава {roman}"
+  started-subtitle: "{title}"
+  started: "<gray>Новая глава: <white>{title}<gray>."
+  objectives-header: "<dark_gray>Цели главы:"
+  objective-line: "<dark_gray> • <gray>{text} <dark_gray>×{amount}"
+  objective-done: "<green>✓ <gray>{text}"
+  complete-title: "<dark_aqua>Глава завершена"
+  complete-subtitle: "{title}"
+  complete: "<green>Глава <white>{title}<green> завершена. Награда: <aqua>{echo} эха<green>."
+  broadcast: "<dark_aqua>{player} <gray>прошёл главу <white>{title}<gray>."
+  final-title: "<light_purple>Хор замолкает"
+  final-subtitle: "<gray>Ты стал Слушающим до конца"
+  final-lines:
+    - "<dark_gray>» <gray>Ты стоял в самом сердце Бездны и не отвернулся."
+    - "<dark_gray>» <gray>Скалк больше не шепчет. Он поёт."
+    - "<dark_gray>» <gray>И в этой песне есть твой голос."
+    - "<green>Финальная награда: <white>1000 эха<green>."
+  final-broadcast: "<light_purple>{player} <gray>завершил историю Отголосков Бездны!"
+
+quest:
+  new-player: "<dark_aqua>Шёпот уже здесь. Начни с <white>/lor<dark_aqua>, Слушающий."
+
+# ---------------- Мобы ----------------
+mobs:
+  crawler:
+    name: "<dark_green>Скалк-ползун"
+    short: "Скалк-ползун"
+  sentinel:
+    name: "<dark_aqua>Эхо-страж"
+    short: "Эхо-страж"
+  devourer:
+    name: "<dark_purple>Пожиратель Эха"
+    short: "Пожиратель"
+  herald:
+    name: "<light_purple>Скалк-вестник"
+    short: "Вестник"
+  echo-reward: "<aqua>+{echo} эха <dark_gray>за {mob}"
+  hit:
+    crawler: "<dark_purple>Ползун вцепился в тебя: +6% заражения"
+    sentinel: "<dark_purple>Волна стража: +3% заражения"
+    devourer: "<dark_purple>Пожиратель высосал <white>{echo}<dark_purple> эха"
+    herald: "<dark_purple>Шёпот вестника: +4% заражения"
+
+# ---------------- Босс ----------------
+boss:
+  name: "<dark_red>Глашатай Бездны"
+  already-active: "<red>Глашатай уже пробуждён."
+  spawn-title: "<dark_red>Глашатай Бездны"
+  spawn-subtitle: "<gray>Хор смотрит на тебя"
+  phase: "<dark_red>Глашатай переходит в фазу <white>{phase}<dark_red>!"
+  phase-title: "<dark_red>Фаза {phase}"
+  phase-subtitle: "<gray>Хор усиливается"
+  enrage: "<dark_red>Глашатай в ярости: Бездна больше не сдерживается!"
+  hit: "<dark_red>Звуковой удар!"
+  pulse: "<dark_red>Импульс тьмы!"
+  shockwave: "<dark_red>Ударная волна!"
+  defeated: "<light_purple>Глашатай Бездны повержен! <gray>Последний удар: <white>{player}<gray>."
+  reward: "<green>Награда за победу: <aqua>{echo} эха<green> и Сердце Хора."
+  victory-title: "<light_purple>Бездна затихла"
+  victory-subtitle: "<gray>Но ненадолго…"
+  timeout: "<gray>Глашатай Бездны растворился в тишине: рядом никого не осталось."
+  cancelled: "<gray>Ритуал прерван. Глашатай ушёл."
+
+# ---------------- Ритуал ----------------
+ritual:
+  scheme:
+    - "<dark_aqua><bold>Ритуал призыва Глашатая"
+    - "<gray>Собери конструкцию 5×5 вокруг скалк-катализатора:"
+    - "<dark_gray>К . С . К"
+    - "<dark_gray>. . . . ."
+    - "<dark_gray>С . Ц . С"
+    - "<dark_gray>. . . . ."
+    - "<dark_gray>К . С . К"
+    - "<gray>Ц <dark_gray>— скалк-катализатор (центр)"
+    - "<gray>К <dark_gray>— скалк-крикун (по углам, радиус 2)"
+    - "<gray>С <dark_gray>— скалк (кольцо и середины сторон)"
+    - "<gray>Затем ПКМ резонатором по катализатору."
+  in-progress: "<red>Ритуал уже идёт."
+  boss-alive: "<red>Глашатай уже здесь. Заверши начатое."
+  too-early: "<red>Ты ещё не готов. Нужна глава <white>{chapter}<red>."
+  cooldown: "<red>Бездна ещё помнит прошлый ритуал: <white>{seconds} сек<red>."
+  invalid: "<red>Конструкция неполная:"
+  missing-line: "<dark_gray> • <gray>{line}"
+  missing-catalyst: "в центре должен быть скалк-катализатор"
+  missing-space: "над катализатором нужно свободное место"
+  missing-ring: "не хватает скалка в кольце: {count}"
+  missing-corners: "не хватает скалк-крикунов по углам: {count}"
+  missing-sides: "не хватает скалка по сторонам: {count}"
+  no-key: "<red>Нужен Ключ Бездны."
+  start: "<dark_purple>Катализатор отвечает. Ритуал начался…"
+
+# ---------------- Прилив ----------------
+tide:
+  start-broadcast: "<dark_purple><bold>СКАЛК-ПРИЛИВ! <gray>Бездна поднимается — держись."
+  start-title: "<dark_purple>Скалк-прилив"
+  start-subtitle: "<gray>Заражение ускоряется"
+  start: "<gray>Пять минут Бездна будет особенно голодна. Оставайся в живых."
+  actionbar: "<dark_purple>Прилив: <white>{seconds} сек"
+  end-broadcast: "<dark_aqua>Скалк-прилив отступил. <gray>Бездна снова шепчет тише."
+  end-title: "<dark_aqua>Прилив отступил"
+  end-subtitle: "<gray>Ты выжил"
+  reward: "<green>Награда за выживание: <aqua>{echo} эха<green>."
+
+# ---------------- GUI ----------------
+gui:
+  common:
+    back: "<gray>← Назад"
+  main:
+    title: "<dark_aqua>Отголоски Бездны"
+    echo: "<aqua>Твоё Эхо"
+    echo-value: "<gray>Эхо: <white>{echo}"
+    corruption-value: "<gray>Заражение: <dark_purple>{percent}%"
+    chapter-value: "<gray>Глава: <white>{chapter} <dark_gray>— <gray>{title}"
+    quests: "<white>Главы"
+    quests-lore: "<gray>Сюжет, цели и награды."
+    codex: "<gold>Кодекс Слушающего"
+    codex-lore: "<gray>Записи о скалке и Древнем городе."
+    relics: "<light_purple>Реликвии"
+    relics-lore: "<gray>Открыто: <white>{count}"
+    recipes: "<yellow>Крафты"
+    recipes-lore: "<gray>Все рецепты предметов плагина."
+    stats: "<white>Статистика"
+    stats-lore: "<gray>Твои успехи в слушании."
+    top: "<gold>Топ Слушающих"
+    top-lore: "<gray>Десять голосов, что звучат громче."
+    auction: "<green>Аукцион"
+    auction-lore: "<gray>Лоты других игроков за эхо."
+    ritual: "<dark_purple>Ритуал"
+    ritual-lore:
+      - "<gray>Как призвать Глашатая Бездны."
+      - "<dark_gray>Нажми, чтобы увидеть схему."
+    close: "<red>Закрыть"
+  quests:
+    title: "<dark_aqua>Главы"
+    completed: "<green>Завершено"
+    current: "<aqua>Текущая глава"
+    locked: "<dark_gray>Ещё не открыта"
+    reward: "<gray>Награда: <aqua>{echo} эха"
+  recipes:
+    title: "<yellow>Крафты"
+    entry-lore: "<gray>Нажми, чтобы открыть рецепт."
+    recipe-title: "<yellow>Крафт: <white>{item}"
+    howto: "<yellow>Как скрафтить"
+    howto-lore:
+      - "<gray>Разложи предметы в верстаке"
+      - "<gray>так, как показано в сетке."
+      - "<gray>Серые клетки должны быть пустыми."
+    arrow: "<gray>→"
+    result: "<green>Результат"
+    prev: "<gray>← Предыдущий"
+    next: "<gray>Следующий →"
+    empty: "<gray>Все рецепты отключены в конфиге."
+  chapter:
+    title: "<dark_aqua>Глава {chapter}"
+    status-completed: "<green>Глава завершена."
+    status-open: "<aqua>Глава в процессе."
+    objective-done: "<green>✓ <gray>{text} <dark_gray>{current}/{amount}"
+    objective-open: "<dark_gray>○ <gray>{text} <dark_gray>{current}/{amount}"
+    reward: "<gray>Награда: <aqua>{echo} эха"
+  codex:
+    title: "<gold>Кодекс Слушающего"
+    empty: "<gray>Кодекс пока пуст."
+    prev: "<gray>← Предыдущая страница"
+    next: "<gray>Следующая страница →"
+  relics:
+    title: "<light_purple>Реликвии"
+    owned: "<green>Получено"
+    not-owned: "<dark_gray>Ещё не найдено"
+  stats:
+    title: "<white>Статистика"
+    echo: "<gray>Эхо: <aqua>{echo}"
+    corruption: "<gray>Заражение: <dark_purple>{percent}%"
+    mobs: "<gray>Убито порождений: <white>{count}"
+    bosses: "<gray>Побеждено Глашатаев: <white>{count}"
+    blocks: "<gray>Разрушено скалка: <white>{count}"
+    tides: "<gray>Пережито приливов: <white>{count}"
+  top:
+    title: "<gold>Топ Слушающих"
+    entry: "<gold>{place}. <white>{player}"
+    echo: "<gray>Эхо: <aqua>{echo}"
+  auction:
+    title: "<gold>Аукцион"
+    search-title: "<gold>Аукцион: поиск «{query}»"
+    my-title: "<gold>Мои лоты"
+    confirm-title: "<gold>Подтверждение покупки"
+    listing-seller: "<gray>Продавец: <white>{player}"
+    listing-price: "<gray>Цена: <aqua>{price} эха"
+    listing-id: "<dark_gray>ID: <gray>{id}"
+    listing-buy: "<green>Нажми, чтобы купить"
+    listing-own: "<yellow>Это твой лот"
+    listing-cancel-hint: "<gray>Shift+клик — снять с продажи"
+    listing-cancel: "<yellow>Нажми, чтобы снять с продажи"
+    empty: "<gray>На аукционе пока нет лотов."
+    empty-search: "<gray>По запросу «<white>{query}<gray>» ничего не найдено."
+    empty-my: "<gray>У тебя пока нет лотов."
+    prev: "<gray>← Предыдущая страница"
+    next: "<gray>Следующая страница →"
+    page: "<gray>Страница <white>{page}<gray>/<white>{pages}"
+    my: "<gold>Мои лоты"
+    my-lore: "<gray>Нажми, чтобы посмотреть свои лоты."
+    balance: "<aqua>Твоё эхо: <white>{echo}"
+    search-hint: "<gray>Поиск: <white>/lor ah search <запрос>"
+    close: "<red>Закрыть"
+    back: "<gray>← К аукциону"
+    confirm-buy: "<green>Купить за <aqua>{price} эха"
+    confirm-cancel: "<red>Отмена"
+    confirm-seller: "<gray>Продавец: <white>{player}"
+    confirm-price: "<gray>Цена: <aqua>{price} эха"
+    confirm-tax: "<dark_gray>Комиссия аукциона: <gray>{tax} эха"
+
+# ---------------- Кодекс ----------------
+codex:
+  pages:
+    1:
+      title: "<gold>Страница I — Что такое скалк"
+      text:
+        - "Скалк — не грибок и не болезнь."
+        - "Это память. Всё, что было погребено под миром,"
+        - "однажды начинает петь."
+        - ""
+        - "Тот, кто слышит этот хор, называется Слушающим."
+    2:
+      title: "<gold>Страница II — Древний город"
+      text:
+        - "Город построили те, кто первыми услышал хор."
+        - "Они думали, что смогут жить рядом с ним."
+        - ""
+        - "Теперь там только скалк, крикуны"
+        - "и Хранитель, который охраняет тишину."
+    3:
+      title: "<gold>Страница III — Заражение"
+      text:
+        - "Рядом со скалком заражение растёт."
+        - "На 25% появляется тошнота и шёпот."
+        - "На 50% приходит Тьма."
+        - "На 75% — слабость и голоса."
+        - "На 100% хор забирает тело, но даёт вдвое больше эха."
+        - ""
+        - "Очищающая эссенция и Амулет Тишины помогают."
+    4:
+      title: "<gold>Страница IV — Ритуал"
+      text:
+        - "Чтобы позвать Глашатая, нужен Ключ Бездны"
+        - "и круг из скалка вокруг катализатора."
+        - ""
+        - "Схему можно посмотреть командой <white>/lor ritual</white>."
+        - "Ритуал открывается с пятой главы."
+    5:
+      title: "<gold>Страница V — Глашатай"
+      text:
+        - "Глашатай — не Хранитель."
+        - "Хранитель охраняет. Глашатай говорит."
+        - ""
+        - "Три фазы. Звук, тьма, призыв."
+        - "Победа даёт Сердце Хора и место в финале истории."

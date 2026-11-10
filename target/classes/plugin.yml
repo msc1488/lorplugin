@@ -1,0 +1,33 @@
+name: LorPlugin
+version: 1.0.0
+main: ru.lor.plugin.LorPlugin
+api-version: '1.21'
+authors: [ Lor ]
+description: Echoes of the Deep - сюжетный скалк-плагин с главами, ритуалом, боссом и событиями.
+website: https://example.com
+softdepend: [ PlaceholderAPI ]
+commands:
+  lor:
+    description: Меню и команды Отголосков Бездны
+    usage: /lor help
+    aliases: [ lore, skulk, echo ]
+  crafts:
+    description: Открыть меню крафтов LorPlugin
+    usage: /crafts
+    aliases: [ recipes, craft ]
+permissions:
+  lor.use:
+    description: Доступ к меню и сюжету
+    default: true
+  lor.pay:
+    description: Переводы эха между игроками (/lor pay)
+    default: true
+  lor.logs:
+    description: Просмотр логов переводов эха (/lor logs)
+    default: op
+  lor.auction:
+    description: Доступ к аукциону (/lor ah)
+    default: true
+  lor.admin:
+    description: Административные команды плагина
+    default: op

@@ -1,0 +1,137 @@
+# ==========================================================
+#  Главы сюжета «Отголоски Бездны»
+#  Типы целей:
+#   BREAK_SCULK, KILL_SCULK, KILL_MOB (item = id моба),
+#   COLLECT_ITEM / CRAFT_ITEM (item = id предмета),
+#   VISIT_DEEP_DARK, ACTIVATE_RITUAL, SURVIVE_TIDE,
+#   KILL_BOSS, CLEANSE
+# ==========================================================
+
+chapters:
+  1:
+    title: "<dark_aqua>Глава I — Шёпот под землёй"
+    lore:
+      - "Сначала это был просто шум в пещере."
+      - "Потом шум стал словами."
+      - "Ты нашёл скалк — и он нашёл тебя."
+    objectives:
+      - type: BREAK_SCULK
+        amount: 15
+        text: "Разрушить скалк-блоки"
+      - type: COLLECT_ITEM
+        item: echo_shard
+        amount: 3
+        text: "Собрать осколки эха"
+    rewards:
+      echo: 120
+      items:
+        - resonator
+    broadcast: "<dark_aqua>{player} <gray>услышал первый шёпот."
+
+  2:
+    title: "<dark_aqua>Глава II — Первый контакт"
+    lore:
+      - "Скалк не любит, когда его слушают без разрешения."
+      - "Из трещин полезли те, кто уже согласился."
+    objectives:
+      - type: KILL_SCULK
+        amount: 5
+        text: "Уничтожить порождения скалка"
+      - type: KILL_MOB
+        item: crawler
+        amount: 3
+        text: "Убить скалк-ползунов"
+      - type: COLLECT_ITEM
+        item: echo_shard
+        amount: 6
+        text: "Собрать осколки эха"
+    rewards:
+      echo: 180
+      items:
+        - cleansing_essence
+        - cleansing_essence
+    broadcast: "<dark_aqua>{player} <gray>пережил первый контакт."
+
+  3:
+    title: "<dark_aqua>Глава III — Резонанс"
+    lore:
+      - "Резонатор отвечает не тебе, а хору."
+      - "Чтобы понять ответ, нужно спуститься туда,"
+      - "где свет не бывает."
+    objectives:
+      - type: CRAFT_ITEM
+        item: resonator
+        amount: 1
+        text: "Создать резонатор"
+      - type: VISIT_DEEP_DARK
+        amount: 1
+        text: "Спуститься в Глубокую Тьму"
+      - type: KILL_MOB
+        item: sentinel
+        amount: 1
+        text: "Уничтожить эхо-стража"
+    rewards:
+      echo: 260
+      items:
+        - silence_amulet
+    broadcast: "<dark_aqua>{player} <gray>настроился на резонанс."
+
+  4:
+    title: "<dark_aqua>Глава IV — Древний город"
+    lore:
+      - "Город помнит шаги тех, кто жил здесь до тебя."
+      - "Прилив придёт, и скалк попробует забрать всё."
+      - "Выживи. Найди ключ."
+    objectives:
+      - type: SURVIVE_TIDE
+        amount: 1
+        text: "Пережить Скалк-прилив"
+      - type: KILL_SCULK
+        amount: 8
+        text: "Уничтожить порождения скалка"
+      - type: KILL_MOB
+        item: sentinel
+        amount: 2
+        text: "Убить эхо-стражей"
+    rewards:
+      echo: 320
+      items:
+        - abyss_key
+    broadcast: "<dark_aqua>{player} <gray>прошёл Древний город."
+
+  5:
+    title: "<dark_aqua>Глава V — Хор пробуждается"
+    lore:
+      - "Ключ тяжёлый. Круг ждёт."
+      - "Глашатай ответит на зов — и это будет не разговор."
+    objectives:
+      - type: CRAFT_ITEM
+        item: sculk_blade
+        amount: 1
+        text: "Выковать скалк-клинок"
+      - type: ACTIVATE_RITUAL
+        amount: 1
+        text: "Провести ритуал призыва"
+      - type: KILL_MOB
+        item: devourer
+        amount: 3
+        text: "Убить пожирателей эха"
+    rewards:
+      echo: 400
+      items:
+        - cleansing_essence
+        - cleansing_essence
+    broadcast: "<dark_aqua>{player} <gray>пробудил Глашатая Бездны."
+
+  6:
+    title: "<dark_red>Глава VI — Глашатай Бездны"
+    lore:
+      - "Есть только хор и ты."
+      - "Один из вас должен замолчать."
+    objectives:
+      - type: KILL_BOSS
+        amount: 1
+        text: "Победить Глашатая Бездны"
+    rewards:
+      echo: 1000
+    broadcast: "<light_purple>{player} <gray>завершил историю Отголосков Бездны!"
